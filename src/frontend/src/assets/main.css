@@ -25,22 +25,11 @@ h1 {
   text-align: center;
 }
 
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  .site-title {
-    text-align: left;
-  }
-}
-
 h2 {
   color: white;
   font-size: 45px;
   text-align: center;
 }
-
-/*ul {
-  line-height: 1.5em;
-  padding-left: 1.5em;
-}*/
 
 a {
   margin-right: 32px;
@@ -51,28 +40,4 @@ a {
 
 a:hover {
   color: #4fc08d;
-}
-
-.header-container {
-  font-size: 50px;
-  background-color: #323942;
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 20px;
-}
-
-.navbar-link {
-  font-size: 20px;
-}
-
-.navbar-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.site-title {
-  letter-spacing: 4px;
-  font-size: 32px;
-  margin-top: 7px;
 }

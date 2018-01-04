@@ -1,19 +1,19 @@
 <template>
-  <div class="signup-container">
+  <div class="signup-form__container">
     <h2>Sign up</h2>
     <form class="signup-form" v-on:submit="validate(password, username, selectedTeam)">
         <span>Select your team: </span>
         <select v-model="selectedTeam">
           <option disabled value="">Please select your team</option>
           <option v-for="item in teams" v-bind:value="item">
-            {{ item.teamName }}
+            {{item.teamName}}
           </option>
         </select>
         <input type="text" v-model="username" placeholder="Username"/>
         <input type="password" v-model="password" placeholder="Password"/>
         <button type="submit" v-on:click="validate(password, username, selectedTeam)"><strong>Create account</strong></button>
-        <p class="message">{{message}}</p>
-        <p v-if="success" class="success-message">Success! You are now registered and will be forwarded to the Login</p>
+        <p class="signup-form__error-message">{{errorMessage}}</p>
+        <p v-if="success" class="signup-form__success-message">Success! You are now registered and will be forwarded to the login</p>
     </form>
   </div>
 </template>
@@ -29,10 +29,9 @@
         username: '',
         password: '',
         teams: [],
-        userDataExists: true,
         selectedTeam: {},
-        message: '',
-        success: true
+        errorMessage: '',
+        success: false
       }
     },
     methods: {
@@ -40,11 +39,10 @@
         event.preventDefault()
 
         if (password.length < 1 || username.length < 1 || Object.keys(teamname).length === 0) {
-          this.message = 'All fields are required'
-          this.userDataExists = false
+          this.errorMessage = 'All fields are required'
         } else {
           this.saveUser(password, username, teamname)
-          this.message = ''
+          this.errorMessage = ''
         }
       },
       saveUser: function () {
@@ -52,10 +50,13 @@
           username: this.username, password: this.password, team: this.selectedTeam
         })
           .then(() => {
-            this.$router.replace(this.$route.query.redirect || '/login')
+            this.success = true
+            setTimeout(() => {
+              this.$router.replace(this.$route.query.redirect || '/login')
+            }, 3000);
           })
           .catch(() => {
-            this.message = 'Username is already in use'
+            this.errorMessage = 'Username is already in use'
           })
       },
       getTeams: function () {
@@ -72,10 +73,6 @@
 </script>
 
 <style scoped>
-
-  .message {
-    color: red;
-  }
 
   select {
     margin: 5px 5px 5px 0;
@@ -138,6 +135,15 @@
 
   button:hover {
     opacity: 0.7;
+  }
+
+  .signup-form__error-message {
+    padding-top: 8px;
+    color: red;
+  }
+
+  .signup-form__success-message {
+    padding-top: 8px;
   }
 
 </style>

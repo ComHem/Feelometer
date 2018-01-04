@@ -55,6 +55,30 @@
 <style>
   @import url('assets/main.css');
 
+  .header-container {
+    font-size: 50px;
+    background-color: #323942;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 20px;
+  }
+
+  .navbar-link {
+    font-size: 20px;
+  }
+
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .site-title {
+    letter-spacing: 4px;
+    font-size: 32px;
+    margin-top: 7px;
+  }
+
   #hamburger-box, .toggle {
     display:none;
   }
@@ -66,6 +90,10 @@
   }
 
   @media screen and (min-width: 320px) and (max-width: 767px) {
+    .site-title {
+      text-align: left;
+    }
+
     .navbar-container {
       display: none;
     }
@@ -125,7 +153,6 @@
       background-color: #323942;
     }
 
-    /* show menu - user clicked on hamburger */
     #hamburger-box:checked + label + ul.menu > li {
       opacity: 1;
       visibility: visible;
