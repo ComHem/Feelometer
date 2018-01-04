@@ -12,8 +12,8 @@
       <Span> You</Span>
     </div>
     <div class="allTimeScores">
-      <div class="average-div">All time team average: {{allTimeTeamScore}}</div>
-      <div class="average-div">All time user average: {{allTimeUserScore}}</div>
+      <div class="average-div">Your team's all time average: {{allTimeTeamScore}}</div>
+      <div class="average-div">Your all time average: {{allTimeUserScore}}</div>
       </div>
   </div>
   </div>
