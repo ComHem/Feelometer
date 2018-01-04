@@ -13,6 +13,7 @@
         <input type="password" v-model="password" placeholder="Password"/>
         <button type="submit" v-on:click="validate(password, username, selectedTeam)"><strong>Create account</strong></button>
         <p class="message">{{message}}</p>
+        <p v-if="success" class="success-message">Success! You are now registered and will be forwarded to the Login</p>
     </form>
   </div>
 </template>
@@ -30,7 +31,8 @@
         teams: [],
         userDataExists: true,
         selectedTeam: {},
-        message: ''
+        message: '',
+        success: true
       }
     },
     methods: {
