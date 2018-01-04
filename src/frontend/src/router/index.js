@@ -2,8 +2,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import auth from '@/auth'
-import RegisterUser from '@/components/SignUpForm.vue'
-import Login from '@/components/Login.vue'
+import SignUpForm from '@/components/SignUpForm.vue'
+import LoginForm from '@/components/LoginForm.vue'
 import Feelometer from '@/components/Feelometer.vue'
 import TeamPage from '@/components/TeamPage.vue'
 import ChartDiv from '@/components/ChartDiv.vue'
@@ -17,8 +17,8 @@ export default new Router({
   base: __dirname,
 
   routes: [
-    { path: '/login', component: Login, },
-    { type: 'scope', path: '/signup', component: RegisterUser },
+    { path: '/login', component: LoginForm, },
+    { path: '/signup', component: SignUpForm },
     { path: '/', component: Feelometer, beforeEnter: requireAuth },
     { path: '/teampage', component: TeamPage, beforeEnter: requireAuth },
     { path: '/chart', component: ChartDiv, beforeEnter: requireAuth },

@@ -23,7 +23,7 @@
   import axios from 'axios'
 
   export default {
-    name: 'RegisterUser',
+    name: 'SignUpForm',
     data() {
       return {
         username: '',
@@ -87,23 +87,6 @@
     appearance: normal;
   }
 
-  .signup-form {
-    border: 2px solid darkcyan;
-    width: 30%;
-    font-size: large;
-    color: black;
-    margin: 35px auto auto auto;
-    padding: 16px;
-    background: #f7f9f8;
-    border-radius: 8px;
-  }
-
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    .signup-form {
-      width: 80%;
-    }
-  }
-
   h2 {
     margin-top: 50px;
     letter-spacing: 2px;
@@ -135,6 +118,23 @@
 
   button:hover {
     opacity: 0.7;
+  }
+
+  .signup-form {
+    border: 2px solid darkcyan;
+    width: 30%;
+    font-size: large;
+    color: black;
+    margin: 35px auto auto auto;
+    padding: 16px;
+    background: #f7f9f8;
+    border-radius: 8px;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    .signup-form {
+      width: 80%;
+    }
   }
 
   .signup-form__error-message {

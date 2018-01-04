@@ -52,8 +52,8 @@
   }
 </script>
 
-<style>
-  @import url('assets/main.css');
+<style lang="scss">
+  @import url('assets/main.scss');
 
   .header-container {
     font-size: 50px;

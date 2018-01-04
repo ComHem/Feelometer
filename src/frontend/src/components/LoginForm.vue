@@ -1,15 +1,12 @@
 <template>
-  <div class="login-container">
+  <div class="login-form__container">
     <h2>Login</h2>
-<!--    <p class="login-error" v-if="$route.query.redirect">
-      You need to login first.
-    </p>-->
-    <form class="login-form" v-on:submit="validate(pass, username)">
-        <label><input v-model="username" placeholder="Username" type="text"></label>
-        <label><input v-model="pass" placeholder="Password" type="password"></label>
-        {{message}}
-        <button type="submit" v-on:click="validate(pass, username)"><strong>Log in</strong></button>
-        <p v-if="error" class="error">Bad login information</p>
+    <form class="login-form__form" v-on:submit="validate(pass, username)">
+      <label><input v-model="username" placeholder="Username" type="text"></label>
+      <label><input v-model="pass" placeholder="Password" type="password"></label>
+      <p class="login-form__error-message">{{message}}</p>
+      <button type="submit" v-on:click="validate(pass, username)"><strong>Log in</strong></button>
+      <p v-if="error" class="error">Bad login information</p>
     </form>
   </div>
 </template>
@@ -19,12 +16,12 @@
   import auth from '../auth'
 
   export default {
-    data () {
+    name: 'LoginForm',
+    data() {
       return {
         username: '',
         pass: '',
         error: false,
-        userDataExists: true,
         message: ''
       }
     },
@@ -34,14 +31,13 @@
 
         if (password.length < 1 || username.length < 1) {
           this.message = 'All fields are required'
-          this.userDataExists = false
           this.login()
         } else {
           this.login()
           this.message = ''
         }
       },
-      login () {
+      login() {
         auth.login(this.username, this.pass, loggedIn => {
           if (!loggedIn) {
             this.error = true
@@ -54,14 +50,14 @@
   }
 </script>
 
-<style>
+<style lang="scss">
 
-  .login-error {
+  .login-form__error-message {
     margin-top: 16px;
     text-align: center;
   }
 
-  .login-form {
+  .login-form__form {
     width: 30%;
     border: 2px solid darkcyan;
     margin: 35px auto auto auto;
@@ -73,14 +69,14 @@
   }
 
   @media screen and (min-width: 320px) and (max-width: 767px) {
-    .login-form {
+    .login-form__form {
       width: 80%;
     }
   }
 
   h2 {
     margin-top: 50px;
-    letter-spacing:2px;
+    letter-spacing: 2px;
     font-weight: 900;
   }
 
@@ -115,6 +111,6 @@
     color: red;
   }
 
-  @import url('../assets/main.css');
+  @import url('../assets/main.scss');
 
 </style>
