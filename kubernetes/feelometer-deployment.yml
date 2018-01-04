@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: feelometer-deployment
+spec:
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        app: feelometer
+    spec:
+      containers:
+      - name: feelometer
+        image: mimerdevcontainerregistry.azurecr.io/feelometer:v2
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Always
+        envFrom:
+         - secretRef:
+            name: feelometer-secrets
+        - configMapRef:
+            name: feelometer-configmap
