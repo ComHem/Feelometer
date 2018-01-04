@@ -15,7 +15,7 @@
 ``` bash
 # Clone the project and install the dependencies.
 
-git clone ssh://git@git.is.comhem.com:7999/bjlu20/Feelometer.git
+git clone git@github.com:ComHem/Feelometer.git
 npm install
 
 # Start Spring Boot application as usual, it will start at port 8080.
