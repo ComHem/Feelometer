@@ -18,7 +18,7 @@
 git clone git@github.com:ComHem/Feelometer.git
 npm install
 
-# Start Spring Boot application as usual, it will start at port 8080.
+# Start Spring Boot application as usual, it will start at port 8080. 
 
 # Then serve with hot reload at localhost:8081 (need to do this from dir src/frontend)
 npm run dev

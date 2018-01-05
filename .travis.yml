@@ -1,10 +1,15 @@
 language: generic
 dist: trusty
 sudo: required
-
+jdk:
+- openjdk8
 services:
 - docker
-
+cache:
+  directories:
+  - "$HOME/.m2"
+after_success:
+- bash <(curl -s https://codecov.io/bash)
 before_deploy:
 - ./scripts/setup_kubernetes.sh ${TRAVIS_BRANCH}
 

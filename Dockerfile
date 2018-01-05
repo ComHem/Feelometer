@@ -1,7 +1,6 @@
-FROM node:alpine
+FROM openjdk:8u131-jre-alpine
+VOLUME /tmp
+ADD target/feel-o-meter-0.0.1-SNAPSHOT.jar app.jar
+RUN sh -c 'touch app.jar'
 EXPOSE 8080
-ENV PORT 8080
-ADD . /srv/staticapp
-WORKDIR /srv/staticapp
-RUN npm install && npm install -g serve && npm run-script build
-CMD ["serve", "-s", "build"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]

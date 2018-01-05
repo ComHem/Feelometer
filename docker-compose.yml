@@ -1,0 +1,9 @@
+version: '3'
+services:
+  quantum:
+    build: ./
+    image: feelometer
+    container_name: feelometer
+    ports:
+      - "8080:8080"
+
