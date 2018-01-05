@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: feelometer
-        image: mimerdevcontainerregistry.azurecr.io/feelometer:e1e568f4
+        image: mimerdevcontainerregistry.azurecr.io/feelometer:latest
         livenessProbe:
                 httpGet:
                   path: /health
