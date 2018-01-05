@@ -17,6 +17,18 @@ spec:
       containers:
       - name: feelometer
         image: mimerdevcontainerregistry.azurecr.io/feelometer:v2
+        livenessProbe:
+                httpGet:
+                  path: /health
+                  port: 8080
+                initialDelaySeconds: 30
+                timeoutSeconds: 1
+          readinessProbe:
+                httpGet:
+                  path: /health
+                  port: 8080
+                initialDelaySeconds: 30
+                timeoutSeconds: 1
         ports:
         - containerPort: 8080
         imagePullPolicy: Always
