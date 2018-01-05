@@ -20,7 +20,7 @@ export default new Router({
   routes: [
     { path: '/login', component: LoginForm },
     { path: '/signup', component: SignUpForm },
-    { path: '/createteam', component: CreateTeam },
+    { path: '/createteam', component: CreateTeam, beforeEnter: requireAuth },
     { path: '/', component: Feelometer, beforeEnter: requireAuth },
     { path: '/teampage', component: TeamPage, beforeEnter: requireAuth },
     { path: '/chart', component: ChartDiv, beforeEnter: requireAuth },
