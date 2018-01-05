@@ -1,6 +1,5 @@
 package se.comhem.talang.feelometer.model;
 
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +13,7 @@ public class User {
     private Long userId;
     private String username;
     private String password;
+    private String role;
 
     @ManyToOne
     @JoinColumn(name = "team_id")
@@ -44,6 +44,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public List<Score> getScores() {
