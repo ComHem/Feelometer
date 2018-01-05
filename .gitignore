@@ -1,6 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 /src/frontend/node_modules
 /.idea
+/target
 /src/frontend/package-lock.json
 /package-lock.json
 /feel-o-meter.iml
