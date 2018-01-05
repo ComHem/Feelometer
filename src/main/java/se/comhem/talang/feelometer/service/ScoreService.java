@@ -23,11 +23,6 @@ public class ScoreService {
         return scoreRepository.save(score);
     }
 
-    private Date dateFormatter(String dateToConvert) {
-        LocalDate date = LocalDate.parse(dateToConvert);
-        return Date.valueOf(date);
-    }
-
     public Double findTeamScoreByUser(Long userId, String creationDate) {
         User user = userRepository.findOne(userId);
         Team team = user.getTeam();
@@ -38,8 +33,12 @@ public class ScoreService {
         return calculateTeamScoreByDate(scoreRepository.findTeamScores(teamId), userId);
     }
 
-    private List<ScoreDTO> calculateTeamScoreByDate(List<Score> teamScores, Long userId) {
+    private Date dateFormatter(String dateToConvert) {
+        LocalDate date = LocalDate.parse(dateToConvert);
+        return Date.valueOf(date);
+    }
 
+    private List<ScoreDTO> calculateTeamScoreByDate(List<Score> teamScores, Long userId) {
         Set<Date> set = new HashSet<>();
 
         for (Score teamScore : teamScores) {
@@ -124,7 +123,5 @@ public class ScoreService {
             map.get(teamScore.getDate()).put(teamScore.getTeamName(), teamScore.getScore());
         }
         return map;
-
-
     }
 }
