@@ -57,9 +57,9 @@ function loginRequest(username, pass, callback) {
           authenticated: true,
           token: Math.random().toString(36).substring(7)
         })
-      } else {
-        callback({authenticated: false})
       }
+    }).catch((error) => {
+      callback({authenticated: false})
     })
   }, 0)
 }

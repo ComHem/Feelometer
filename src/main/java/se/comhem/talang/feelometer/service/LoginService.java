@@ -16,10 +16,12 @@ public class LoginService {
 
     public ResponseEntity<User> handleLogin (User user) {
         User userInDB = userRepository.findUserByUsername(user.getUsername());
-       if(user.getUsername().equals(userInDB.getUsername())
-               && BCrypt.checkpw(user.getPassword(), userInDB.getPassword())) {
-           return new ResponseEntity<>(userInDB, HttpStatus.OK);
-       }
+        if(userInDB != null) {
+            if(user.getUsername().equals(userInDB.getUsername())
+                    & BCrypt.checkpw(user.getPassword(), userInDB.getPassword())) {
+                return new ResponseEntity<>(userInDB, HttpStatus.OK);
+            }
+        }
        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
