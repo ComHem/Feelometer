@@ -30,20 +30,11 @@ public class UserService {
         return userRepository.findUserByUsername(username);
     }
 
-
     public ResponseEntity<User> saveUser(User user) {
-        Iterable<User> users = findAll();
-        boolean userExists = StreamSupport.stream(users.spliterator(), false)
-                .anyMatch(u -> u.getUsername().equals(user.getUsername()));
-
-        if(!userExists){
-            String pass = user.getPassword();
-            String hashed = BCrypt.hashpw(pass, BCrypt.gensalt());
-            user.setPassword(hashed);
-
+        if(!userExists(user)){
+            hashPassword(user);
             return new ResponseEntity<>(userRepository.save(user), HttpStatus.OK);
         }
-
         return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
@@ -62,6 +53,18 @@ public class UserService {
 
     public Boolean findIfUserHasPosted(Long userId) {
         return userRepository.findIfUserHasPosted(userId) == null ? false : true;
+    }
+
+    private Boolean userExists(User user) {
+        Iterable<User> users = findAll();
+        return StreamSupport.stream(users.spliterator(), false)
+                .anyMatch(u -> u.getUsername().equals(user.getUsername()));
+    }
+
+    private void hashPassword(User user) {
+        String pass = user.getPassword();
+        String hashed = BCrypt.hashpw(pass, BCrypt.gensalt());
+        user.setPassword(hashed);
     }
 
 }

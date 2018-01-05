@@ -20,7 +20,7 @@ public class LoginService {
                && BCrypt.checkpw(user.getPassword(), userInDB.getPassword())) {
            return new ResponseEntity<>(userInDB, HttpStatus.OK);
        }
-       return new ResponseEntity<>(userInDB, HttpStatus.UNAUTHORIZED);
+       return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
 }
