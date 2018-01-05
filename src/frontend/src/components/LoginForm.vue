@@ -1,12 +1,11 @@
 <template>
   <div class="login-form__container">
     <h2>Login</h2>
-    <form class="login-form__form" v-on:submit="validate(pass, username)">
+    <form class="login-form__form" @submit.prevent="login">
       <label><input v-model="username" placeholder="Username" type="text"></label>
       <label><input v-model="pass" placeholder="Password" type="password"></label>
-      <p class="login-form__error-message">{{message}}</p>
-      <button type="submit" v-on:click="validate(pass, username)"><strong>Log in</strong></button>
-      <p v-if="error" class="error">Bad login information</p>
+      <button type="submit" v-on:click="login"><strong>Log in</strong></button>
+      <p v-if="error" class="error">Incorrect username or password</p>
     </form>
   </div>
 </template>
@@ -26,17 +25,6 @@
       }
     },
     methods: {
-      validate(password, username) {
-        event.preventDefault()
-
-        if (password.length < 1 || username.length < 1) {
-          this.message = 'All fields are required'
-          this.login()
-        } else {
-          this.login()
-          this.message = ''
-        }
-      },
       login() {
         auth.login(this.username, this.pass, loggedIn => {
           if (!loggedIn) {
@@ -110,7 +98,5 @@
   .error {
     color: red;
   }
-
-  @import url('../assets/main.scss');
 
 </style>
