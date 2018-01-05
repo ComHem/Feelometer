@@ -100,7 +100,7 @@
         axios.get('http://localhost:8080/user/' + this.getCookie('userId') + '/score?score=' + this.chosenScore)
           .then((response) => {
             console.log(response)
-            this.$router.replace(this.$route.query.redirect || '/teampage')
+            this.$router.replace(this.$route.query.redirect || '/team-today')
           })
       },
       getCookie: function (name) {

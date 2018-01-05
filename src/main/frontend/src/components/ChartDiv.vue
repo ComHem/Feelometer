@@ -2,8 +2,8 @@
   <div class="main-container">
   <div class="chart-div">
     <h1>Team & user history</h1>
-    <router-link id="user-data-navigator" class="navbar-link" to="/all-team-chart">All teams</router-link>
-    <router-link id="team-data-navigator" class="navbar-link" to="/team-average-chart">Averages</router-link>
+    <router-link id="user-data-navigator" class="navbar-link" to="/history/all-teams">All teams</router-link>
+    <router-link id="team-data-navigator" class="navbar-link" to="/history/team-average">Averages</router-link>
     <div id="chartdiv" style="width: 100%; height: 600px;"></div>
     <div class="squares">
       <div id="color-square-user" v-bind:style="{'background-color': teamColor }"></div>
@@ -27,14 +27,14 @@
     name: 'ChartDiv',
     data () {
       return {
-        allTimeTeamScore: "",
-        allTimeUserScore: "",
-        teamColor: ""
+        allTimeTeamScore: '',
+        allTimeUserScore: '',
+        teamColor: ''
       }
     },
     methods: {
       getTeamScores: function () {
-        axios.get('http://localhost:8080/score/team-scores?teamId=' + this.getCookie('teamId') + "&userId=" + this.getCookie('userId'))
+        axios.get('http://localhost:8080/score/team-scores?teamId=' + this.getCookie('teamId') + '&userId=' + this.getCookie('userId'))
           .then((response) => {
             let teamAllTime = 0;
             let userAllTime = 0;

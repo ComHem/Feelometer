@@ -5,8 +5,8 @@
       <div class="navbar-container">
         <router-link class="navbar-link" v-if="!loggedIn" to="/signup">Sign up</router-link>
         <router-link class="navbar-link" v-if="loggedIn" to="/">How do you feel?</router-link>
-        <router-link class="navbar-link" v-if="loggedIn" to="/teampage">How your team feels</router-link>
-        <router-link class="navbar-link" v-if="loggedIn" to="/chart">History</router-link>
+        <router-link class="navbar-link" v-if="loggedIn" to="/team-today">How your team feels</router-link>
+        <router-link class="navbar-link" v-if="loggedIn" to="/history/team-and-user">History</router-link>
         <router-link class="navbar-link" v-if="loggedIn" to="/logout">Log out</router-link>
         <router-link class="navbar-link" v-if="!loggedIn" to="/login">Log in</router-link>
       </div>
@@ -18,8 +18,8 @@
           <ul class="menu">
             <li><router-link class="navbar-link" v-if="!loggedIn" to="/signup">Sign up</router-link></li>
             <li><router-link class="navbar-link" v-if="loggedIn" to="/">How do you feel?</router-link></li>
-            <li><router-link class="navbar-link" v-if="loggedIn" to="/teampage">How your team feels</router-link></li>
-            <li><router-link class="navbar-link" v-if="loggedIn" to="/chart">History</router-link></li>
+            <li><router-link class="navbar-link" v-if="loggedIn" to="/team-today">How your team feels</router-link></li>
+            <li><router-link class="navbar-link" v-if="loggedIn" to="/history/team-and-user">History</router-link></li>
             <li><router-link class="navbar-link" v-if="loggedIn" to="/logout">Log out</router-link></li>
             <li><router-link class="navbar-link" v-if="!loggedIn" to="/login">Log in</router-link></li>
           </ul>

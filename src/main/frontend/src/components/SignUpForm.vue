@@ -2,18 +2,23 @@
   <div class="signup-form__container">
     <h2>Sign up</h2>
     <form class="signup-form" v-on:submit="validate(password, username, selectedTeam)">
-        <span>Select your team: </span>
-        <select v-model="selectedTeam">
-          <option disabled value="">Please select your team</option>
-          <option v-for="item in teams" v-bind:value="item">
-            {{item.teamName}}
-          </option>
-        </select>
-        <input type="text" v-model="username" placeholder="Username"/>
-        <input type="password" v-model="password" placeholder="Password"/>
-        <button type="submit" v-on:click="validate(password, username, selectedTeam)"><strong>Create account</strong></button>
-        <p class="signup-form__error-message">{{errorMessage}}</p>
-        <p v-if="success" class="signup-form__success-message">Success! You are now registered and will be forwarded to the login</p>
+      <span>Select your team: </span>
+      <select v-model="selectedTeam">
+        <option disabled value="">Please select your team</option>
+        <option v-for="item in teams" v-bind:value="item">
+          {{item.teamName}}
+        </option>
+      </select>
+      <input type="text" v-model="username" placeholder="Username"/>
+      <input type="password" v-model="password" placeholder="Password"/>
+      <button type="submit" v-on:click="validate(password, username, selectedTeam)"><strong>Create account</strong>
+      </button>
+      <div v-if="error" class="signup-form__error-message">
+        <p>{{errorMessage}}</p>
+      </div>
+      <div v-if="success" class="signup-form__success-message">
+        <p>Success! You are now registered and will be forwarded to the login</p>
+      </div>
     </form>
   </div>
 </template>
@@ -31,6 +36,7 @@
         teams: [],
         selectedTeam: {},
         errorMessage: '',
+        error: false,
         success: false
       }
     },
@@ -39,7 +45,7 @@
         event.preventDefault();
 
         if (password.length < 1 || username.length < 1 || Object.keys(teamname).length === 0) {
-          this.errorMessage = 'All fields are required'
+          this.error = true, this.errorMessage = 'All fields are required'
         } else {
           this.saveUser(password, username, teamname);
           this.errorMessage = ''
@@ -50,12 +56,13 @@
           username: this.username, password: this.password, role: "user", team: this.selectedTeam
         })
           .then(() => {
-            this.success = true;
+            this.success = true, this.error = false
             setTimeout(() => {
               this.$router.replace(this.$route.query.redirect || '/login')
             }, 3000);
           })
           .catch(() => {
+            this.error = true
             this.errorMessage = 'Username is already in use'
           })
       },
@@ -138,12 +145,24 @@
   }
 
   .signup-form__error-message {
-    padding-top: 8px;
-    color: red;
+    background-color: #FFBABA;
+    color: #323942;
+    font-size: 14px;
+    border-radius: 6px;
+    margin-top: 8px;
+    padding: 10px 0;
+    text-align: center;
   }
 
   .signup-form__success-message {
-    padding-top: 8px;
+    background-color: #DFF2BF;
+    color: #323942;
+    font-size: 14px;
+    border-radius: 6px;
+    margin-top: 8px;
+    padding: 10px 8px;
+    text-align: center;
+    line-height: 18px;
   }
 
 </style>

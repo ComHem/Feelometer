@@ -22,10 +22,10 @@ export default new Router({
     { path: '/signup', component: SignUpForm },
     { path: '/createteam', component: CreateTeam, beforeEnter: requireAuth },
     { path: '/', component: Feelometer, beforeEnter: requireAuth },
-    { path: '/teampage', component: TeamPage, beforeEnter: requireAuth },
-    { path: '/chart', component: ChartDiv, beforeEnter: requireAuth },
-    { path: '/all-team-chart', component: TeamCharts, beforeEnter: requireAuth },
-    { path: '/team-average-chart', component: TeamAverageChart, beforeEnter: requireAuth },
+    { path: '/team-today', component: TeamPage, beforeEnter: requireAuth },
+    { path: '/history/team-and-user', component: ChartDiv, beforeEnter: requireAuth },
+    { path: '/history/all-teams', component: TeamCharts, beforeEnter: requireAuth },
+    { path: '/history/team-average', component: TeamAverageChart, beforeEnter: requireAuth },
     { path: '/logout',
       beforeEnter (to, from, next) {
         auth.logout()

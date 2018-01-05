@@ -5,7 +5,9 @@
       <label><input v-model="username" placeholder="Username" type="text"></label>
       <label><input v-model="pass" placeholder="Password" type="password"></label>
       <button type="submit" v-on:click="login"><strong>Log in</strong></button>
-      <p v-if="error" class="error">Incorrect username or password</p>
+      <div v-if="error" class="login-form__error-message-container">
+        <p v-if="error" class="login-form__error-message">Incorrect username or password</p>
+      </div>
     </form>
   </div>
 </template>
@@ -40,8 +42,13 @@
 
 <style lang="scss">
 
-  .login-form__error-message {
-    margin-top: 16px;
+  .login-form__error-message-container {
+    background-color: #FFBABA;
+    color: #323942;
+    font-size: 14px;
+    border-radius: 6px;
+    margin-top: 8px;
+    padding: 10px 0;
     text-align: center;
   }
 
@@ -50,7 +57,7 @@
     border: 2px solid darkcyan;
     margin: 35px auto auto auto;
     font-size: large;
-    color: black;
+    color: #000;
     padding: 16px;
     background-color: #f7f9f8;
     border-radius: 8px;
@@ -93,10 +100,6 @@
 
   button:hover {
     opacity: 0.7;
-  }
-
-  .error {
-    color: red;
   }
 
 </style>

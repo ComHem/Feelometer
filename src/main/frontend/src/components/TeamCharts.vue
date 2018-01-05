@@ -1,8 +1,8 @@
 <template>
   <div class="main-container">
     <h1>All teams history</h1>
-    <router-link id="user-data-navigator" class="navbar-link" to="/chart">Your team</router-link>
-    <router-link id="team-data-navigator" class="navbar-link" to="/team-average-chart">Averages</router-link>
+    <router-link id="user-data-navigator" class="navbar-link" to="/history/team-and-user">Your team</router-link>
+    <router-link id="team-data-navigator" class="navbar-link" to="/history/team-average">Averages</router-link>
     <div class="team-charts">
       <div id="teamchart" style="width: 100%; height: 600px;"></div>
     </div>
@@ -19,11 +19,11 @@
 
   export default {
     name: 'TeamCharts',
-    data () {
+    data() {
       return {
         teams: [],
         colors: [
-          "#000000", "#FFFF00", "#FF4A46",  "#0000A6", "#63FFAC", "#B79762", "#004D43", "#8FB0FF", "#997D87",
+          "#000000", "#FFFF00", "#FF4A46", "#0000A6", "#63FFAC", "#B79762", "#004D43", "#8FB0FF", "#997D87",
           "#5A0007", "#809693", "#FEFFE6", "#1B4400", "#4FC601", "#3B5DFF", "#4A3B53", "#FF2F80",
           "#61615A", "#BA0900", "#6B7900", "#00C2A0", "#FFAA92", "#FF90C9", "#B903AA", "#D16100",
           "#DDEFFF", "#000035", "#7B4F4B", "#A1C299", "#300018", "#0AA6D8", "#013349", "#00846F",
@@ -46,34 +46,34 @@
         let teamGraphs = [];
         let graphNumber = 1;
         let colorNumber = 0;
-        for(let team in dataObject){
-            if(team === 'date'){
+        for (let team in dataObject) {
+          if (team === 'date') {
 
+          }
+          else {
+            let color;
+            if (colorNumber > 56) {
+              color = this.getRandomColor();
             }
-            else{
-                let color;
-                if(colorNumber > 56){
-                  color = this.getRandomColor();
-                }
-                else {
-                  color = this.colors[colorNumber];
-                }
-                let graph = {
-                  "id": "g" + graphNumber,
-                  "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
-                  "bullet": "round",
-                  "bulletSize": 8,
-                  "lineColor":color,
-                  "lineThickness": 3,
-                  "negativeLineColor": color,
-                  "type": "smoothedLine",
-                  "valueField": team
-                };
-                this.teams.push({team, color});
-                teamGraphs.push(graph);
-                graphNumber = graphNumber + 1;
-                colorNumber = colorNumber + 1;
+            else {
+              color = this.colors[colorNumber];
             }
+            let graph = {
+              "id": "g" + graphNumber,
+              "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
+              "bullet": "round",
+              "bulletSize": 8,
+              "lineColor": color,
+              "lineThickness": 3,
+              "negativeLineColor": color,
+              "type": "smoothedLine",
+              "valueField": team
+            };
+            this.teams.push({team, color});
+            teamGraphs.push(graph);
+            graphNumber = graphNumber + 1;
+            colorNumber = colorNumber + 1;
+          }
         }
 
         AmCharts.makeChart("teamchart", {
@@ -91,7 +91,7 @@
             "minimum": -2,
             "labelFrequency": 2
           }],
-            "graphs": teamGraphs,
+          "graphs": teamGraphs,
           "chartCursor": {
             "categoryBalloonDateFormat": "YYYY-MM-DD",
             "cursorAlpha": 0,
@@ -150,7 +150,7 @@
     padding-left: 20px;
   }
 
-  .team-labels{
+  .team-labels {
     display: inline-block;
     margin-left: 20px;
     margin-top: 10px;
@@ -201,9 +201,9 @@
   }
 
   #team-data-navigator {
-    position:absolute;
+    position: absolute;
     right: 40px;
-    top:100px;
+    top: 100px;
     display: inline !important;
     text-align: center;
     background-color: #323942;
@@ -213,9 +213,9 @@
   }
 
   #user-data-navigator {
-    position:absolute;
+    position: absolute;
     right: 150px;
-    top:100px;
+    top: 100px;
     display: inline !important;
     text-align: center;
     background-color: #323942;
@@ -229,7 +229,7 @@
       position: relative;
       text-align: center;
       right: 0;
-      top:0;
+      top: 0;
       margin-left: 12px;
       display: block !important;
       background-color: #323942;
@@ -237,11 +237,12 @@
       border-radius: 5px;
 
     }
+
     #user-data-navigator {
       position: relative;
       text-align: center;
       right: 0;
-      top:0;
+      top: 0;
       margin-left: 12px;
       display: block !important;
       background-color: #323942;
