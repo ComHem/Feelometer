@@ -36,21 +36,21 @@
     },
     methods: {
       validate(password, username, teamname) {
-        event.preventDefault()
+        event.preventDefault();
 
         if (password.length < 1 || username.length < 1 || Object.keys(teamname).length === 0) {
           this.errorMessage = 'All fields are required'
         } else {
-          this.saveUser(password, username, teamname)
+          this.saveUser(password, username, teamname);
           this.errorMessage = ''
         }
       },
       saveUser: function () {
         axios.post('http://localhost:8080/user', {
-          username: this.username, password: this.password, team: this.selectedTeam
+          username: this.username, password: this.password, role: "user", team: this.selectedTeam
         })
           .then(() => {
-            this.success = true
+            this.success = true;
             setTimeout(() => {
               this.$router.replace(this.$route.query.redirect || '/login')
             }, 3000);
