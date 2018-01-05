@@ -30,6 +30,7 @@ public class ScoreService {
     }
 
     public List<ScoreDTO> findTeamScores(Long teamId, Long userId) {
+
         return calculateTeamScoreByDate(scoreRepository.findTeamScores(teamId), userId);
     }
 
