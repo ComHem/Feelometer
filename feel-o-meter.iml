@@ -69,6 +69,8 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.3.13.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.10" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-actuator:1.5.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-actuator:1.5.9.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:1.5.9.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:1.5.9.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test-autoconfigure:1.5.9.RELEASE" level="project" />
