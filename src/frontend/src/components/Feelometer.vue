@@ -76,8 +76,8 @@
       <label class="circle dark-green" for="5">5</label>
     </div>
     <div>
-      <h1 v-if="!userHasPosted"><h2>Du har valt: {{chosenScore}}</h2></h1>
-      <h2 v-else>Du har redan röstat idag 🙊 Kom tillbaka imorgon! </h2>
+      <h1 v-if="!userHasPosted"></h1>
+      <h2 class="has-posted-header" v-else>You have already voted today 🙊 Come back tomorrow! </h2>
     </div>
   </div>
 </template>
@@ -89,7 +89,7 @@
     name: 'Feelometer',
     data() {
       return {
-        message: 'Hur känner du dig idag?',
+        message: 'How do you feel today?',
         scores: [-2, 1, 0, 1, 2, 3, 4, 5],
         chosenScore: '',
         userHasPosted: false
@@ -134,6 +134,10 @@
     justify-content: space-around;
     margin: 32px auto;
     width: 80%;
+  }
+
+  .has-posted-header {
+    font-size: 40px;
   }
 
   input[type="radio"] {
