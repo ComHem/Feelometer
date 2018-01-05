@@ -2,4 +2,5 @@
 /src/frontend/node_modules
 /.idea
 /src/frontend/package-lock.json
+/package-lock.json
 /feel-o-meter.iml
