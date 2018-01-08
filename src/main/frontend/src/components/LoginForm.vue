@@ -40,7 +40,7 @@
   }
 </script>
 
-<style lang="scss">
+<style>
 
   .login-form__error-message-container {
     background-color: #FFBABA;

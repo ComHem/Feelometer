@@ -80,7 +80,7 @@
   }
 </script>
 
-<style lang="scss">
+<style>
 
   .login-form__error-message {
     margin-top: 16px;
@@ -141,6 +141,6 @@
     color: red;
   }
 
-  @import url('../assets/main.scss');
+  @import url('../assets/main.css');
 
 </style>
