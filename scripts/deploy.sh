@@ -25,7 +25,7 @@ docker push ${image} && \
 
 echo "Deploying feelometer to cluster..." && \
 kubectl apply -f kubernetes/feelometer-configmap.yml --record && \
-kubectl set image deployment/feelometer-deployment feelometer=${image} --record && \
+kubectl set image deployment/feelometer feelometer=${image} --record && \
 echo "first Deploy done" && \
 kubectl rollout status deployment/feelometer-deployment && \
 echo Deployed ${image} to kubernetes cluster
