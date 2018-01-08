@@ -2,7 +2,7 @@
   <div class="main-container">
     <h1>All time averages</h1>
     <router-link id="user-data-navigator" class="navbar-link" to="/history/team-and-user">Your team</router-link>
-    <router-link id="team-data-navigator" class="navbar-link" to="/history/all-team">All teams</router-link>
+    <router-link id="team-data-navigator" class="navbar-link" to="/history/all-teams">All teams</router-link>
     <div id="team-average-chart" style="width:100%; height: 600px;"></div>
   </div>
 </template>
