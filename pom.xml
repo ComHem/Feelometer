@@ -71,12 +71,12 @@
 
 	<build>
 		<plugins>
-			
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
+			<!-- Frontend -->
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<executions>
@@ -87,15 +87,11 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>src/main/resources</outputDirectory>
+							<outputDirectory>src/main/resources/static</outputDirectory>
 							<overwrite>true</overwrite>
 							<resources>
 								<resource>
-									<directory>src/frontend/target/dist</directory>
-									<includes>
-										<include>static/</include>
-										<include>index.html</include>
-									</includes>
+									<directory>src/main/frontend/target/dist</directory>
 								</resource>
 							</resources>
 						</configuration>
