@@ -5,3 +5,5 @@
 /src/frontend/package-lock.json
 /package-lock.json
 /feel-o-meter.iml
+/src/main/frontend/target
+/src/main/resources/static
